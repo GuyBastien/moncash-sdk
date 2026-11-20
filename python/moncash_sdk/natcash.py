@@ -279,7 +279,12 @@ class NatCash:
         body = parse_json(texte)
         if not 200 <= status < 300:
             msg = body.get("message") if isinstance(body, dict) else None
-            raise NatCashError(f"NatCash : {msg or f'HTTP {status}'}", status=status, body=body)
+            raise NatCashError(
+                f"NatCash : {msg or f'HTTP {status}'}",
+                status=status,
+                code=body.get("code") if isinstance(body, dict) else None,
+                body=body,
+            )
         # NatCash répond 200 avec status != 0 en cas d'erreur
         if not isinstance(body, dict) or body.get("status") != 0:
             msg = body.get("message") if isinstance(body, dict) else None

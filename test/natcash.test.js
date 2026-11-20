@@ -81,6 +81,18 @@ test('une erreur NatCash (status != 0) devient NatCashError', async () => {
   });
 });
 
+test('une erreur HTTP garde le code NatCash', async () => {
+  const nc = new NatCash({
+    ...base,
+    fetch: fakeFetch([{ status: 403, body: { status: 403, code: 'ERR_PERMISSION_DENIED', message: 'Permission denied' } }]),
+  });
+  await assert.rejects(nc.createPayment({ amount: 10, orderId: 1 }), (err) => {
+    assert.equal(err.status, 403);
+    assert.equal(err.code, 'ERR_PERMISSION_DENIED');
+    return true;
+  });
+});
+
 test('verifyPayment : signature, succès et montant', async () => {
   const cb = vecteurs.callbacks[0]; // ORDER-001, code 1
   const transaction = {

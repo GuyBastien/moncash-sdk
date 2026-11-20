@@ -236,7 +236,11 @@ export class NatCash {
       body = text;
     }
     if (!res.ok) {
-      throw new NatCashError(`NatCash : ${body?.message || `HTTP ${res.status}`}`, { status: res.status, body });
+      throw new NatCashError(`NatCash : ${body?.message || `HTTP ${res.status}`}`, {
+        status: res.status,
+        code: body?.code,
+        body,
+      });
     }
     // NatCash répond 200 avec status != 0 en cas d'erreur
     if (!body || body.status !== 0) {

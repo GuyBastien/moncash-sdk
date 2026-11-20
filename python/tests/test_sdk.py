@@ -138,6 +138,13 @@ class TestNatCash(unittest.TestCase):
             nc.get_payment_by_order_id("X")
         self.assertEqual(ctx.exception.code, "ERR_TRANSACTION_NOT_FOUND")
 
+    def test_erreur_http_garde_le_code(self):
+        t = FakeTransport((403, {"status": 403, "code": "ERR_PERMISSION_DENIED", "message": "Permission denied"}))
+        nc = NatCash(**NATCASH, transport=t)
+        with self.assertRaises(NatCashError) as ctx:
+            nc.create_payment(10, 1)
+        self.assertEqual((ctx.exception.status, ctx.exception.code), (403, "ERR_PERMISSION_DENIED"))
+
     def test_verify_payment(self):
         cb = VECTEURS["callbacks"][0]
         tx = (
