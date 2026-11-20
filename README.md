@@ -6,7 +6,9 @@
   <img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60">
 </p>
 
-SDK Node.js simple pour **MonCash** (Digicel) et **NatCash** (Natcom).
+[![Tests](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml/badge.svg)](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml)
+
+SDK Node.js et Python simple pour **MonCash** (Digicel) et **NatCash** (Natcom).
 Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 
 🇭🇹 [Li an kreyòl](README.ht.md)
@@ -147,15 +149,38 @@ try {
 - Comparez le montant payé avec le montant de la commande dans votre base.
 - Ne validez une commande qu'une seule fois (gardez le `transactionId` déjà utilisé).
 
+## Python
+
+Une version Python (3.9+, sans dépendance) se trouve dans le dossier [`python/`](python/) :
+
+```bash
+pip install moncash-sdk
+```
+
+```python
+from moncash_sdk import MonCash, NatCash
+
+moncash = MonCash("CLIENT_ID", "CLIENT_SECRET", mode="sandbox")
+paiement = moncash.create_payment(amount=500, order_id="CMD-001")
+print(paiement["redirect_url"])
+```
+
 ## Tests
 
 ```bash
-npm test
+npm test                                              # Node.js
+cd python && python -m unittest discover -s tests     # Python
+```
+
+Test réel avec vos clés sandbox :
+
+```bash
+MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
 ```
 
 ## Contribuer
 
-Les issues et pull requests sont les bienvenues. Idées : version Python, middleware Express, tests avec de vraies clés NatCash.
+Les issues et pull requests sont les bienvenues. Idées : middleware Express, intégration Django/Flask, tests avec de vraies clés NatCash.
 
 ## Licence
 

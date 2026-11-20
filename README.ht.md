@@ -6,7 +6,9 @@
   <img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60">
 </p>
 
-SDK Node.js senp pou **MonCash** (Digicel) ak **NatCash** (Natcom).
+[![Tests](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml/badge.svg)](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml)
+
+SDK Node.js ak Python senp pou **MonCash** (Digicel) ak **NatCash** (Natcom).
 Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
 
 🇫🇷 [Lire en français](README.md)
@@ -112,9 +114,30 @@ Egzanp konplè : [`examples/natcash-express.js`](examples/natcash-express.js).
 - Konpare montan ki peye a ak montan kòmand lan nan baz done w.
 - Pa valide menm kòmand lan de fwa (kenbe `transactionId` ou deja itilize yo).
 
+## Python
+
+Gen yon vèsyon Python (3.9+, san depandans) nan dosye [`python/`](python/) :
+
+```bash
+pip install moncash-sdk
+```
+
+## Tès
+
+```bash
+npm test                                              # Node.js
+cd python && python -m unittest discover -s tests     # Python
+```
+
+Tès reyèl ak kle sandbox ou :
+
+```bash
+MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
+```
+
 ## Kontribye
 
-Issues ak pull request byenveni. Lide : vèsyon Python, middleware Express, teste ak vrè kle NatCash.
+Issues ak pull request byenveni. Lide : middleware Express, Django/Flask, teste ak vrè kle NatCash.
 
 ## Lisans
 

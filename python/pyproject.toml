@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moncash-sdk"
+version = "0.1.0"
+description = "SDK Python simple pour MonCash et NatCash (Haïti) : paiements, vérification, transferts"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "GuyBastien" }]
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["moncash", "natcash", "natcom", "digicel", "haiti", "ayiti", "payment"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/GuyBastien/moncash-sdk"
+
+[tool.setuptools]
+packages = ["moncash_sdk"]
