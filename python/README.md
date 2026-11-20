@@ -1,6 +1,6 @@
 # moncash-sdk (Python)
 
-SDK Python simple pour **MonCash** (Digicel) et **NatCash** (Natcom). Aucune dépendance, Python 3.9+.
+SDK Python simple pour **MonCash** (Digicel) et **NatCash** (Natcom). Aucune dépendance, Python 3.10+.
 
 > Projet non officiel, sans lien avec Digicel ni Natcom.
 

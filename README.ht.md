@@ -118,7 +118,7 @@ Egzanp konplè : [`examples/natcash-express.js`](examples/natcash-express.js).
 
 ## Python
 
-Gen yon vèsyon Python (3.9+, san depandans) nan dosye [`python/`](python/) :
+Gen yon vèsyon Python (3.10+, san depandans) nan dosye [`python/`](python/) :
 
 ```bash
 pip install moncash-sdk

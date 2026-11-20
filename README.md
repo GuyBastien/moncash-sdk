@@ -153,7 +153,7 @@ try {
 
 ## Python
 
-Une version Python (3.9+, sans dépendance) se trouve dans le dossier [`python/`](python/) :
+Une version Python (3.10+, sans dépendance) se trouve dans le dossier [`python/`](python/) :
 
 ```bash
 pip install moncash-sdk

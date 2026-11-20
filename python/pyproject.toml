@@ -9,7 +9,7 @@ description = "SDK Python simple pour MonCash et NatCash (Haïti) : paiements, v
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "GuyBastien" }]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = []
 keywords = ["moncash", "natcash", "natcom", "digicel", "haiti", "ayiti", "payment"]
 classifiers = [
