@@ -127,9 +127,16 @@ export class MonCash {
    * À utiliser avant de valider une commande.
    */
   async verifyPayment({ transactionId, orderId, amount }) {
-    const p = transactionId
-      ? await this.getPaymentByTransactionId(transactionId)
-      : await this.getPaymentByOrderId(orderId);
+    let p;
+    try {
+      p = transactionId
+        ? await this.getPaymentByTransactionId(transactionId)
+        : await this.getPaymentByOrderId(orderId);
+    } catch (err) {
+      // Paiement introuvable : ce n'est pas une panne, juste "pas payé"
+      if (err instanceof MonCashError && err.status === 404) return { ok: false, payment: null };
+      throw err;
+    }
     const okMessage = String(p.message || '').toLowerCase() === 'successful';
     const okOrder = orderId === undefined || String(p.reference) === String(orderId);
     const okAmount = amount === undefined || Number(p.cost) === Number(amount);

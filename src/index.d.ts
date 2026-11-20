@@ -41,7 +41,7 @@ export declare class MonCash {
     transactionId?: string;
     orderId?: string | number;
     amount?: number;
-  }): Promise<{ ok: boolean; payment: Payment }>;
+  }): Promise<{ ok: boolean; payment: Payment | null }>;
   transfer(params: {
     amount: number;
     receiver: string;

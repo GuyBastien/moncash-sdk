@@ -121,10 +121,16 @@ class MonCash:
         amount: Optional[float] = None,
     ) -> Dict[str, Any]:
         """Renvoie {ok, payment} : ok vrai seulement si payé, bonne commande, bon montant."""
-        if transaction_id:
-            p = self.get_payment_by_transaction_id(transaction_id)
-        else:
-            p = self.get_payment_by_order_id(order_id)
+        try:
+            if transaction_id:
+                p = self.get_payment_by_transaction_id(transaction_id)
+            else:
+                p = self.get_payment_by_order_id(order_id)
+        except MonCashError as err:
+            # Paiement introuvable : ce n'est pas une panne, juste "pas payé"
+            if err.status == 404:
+                return {"ok": False, "payment": None}
+            raise
         ok_message = str(p.get("message") or "").lower() == "successful"
         ok_order = order_id is None or str(p.get("reference")) == str(order_id)
         ok_amount = amount is None or float(p.get("cost") or 0) == float(amount)

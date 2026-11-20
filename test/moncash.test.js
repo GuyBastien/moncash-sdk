@@ -113,3 +113,12 @@ test('valide le montant', async () => {
   await assert.rejects(mc.createPayment({ amount: -5, orderId: 1 }), MonCashError);
   await assert.rejects(mc.createPayment({ amount: '500', orderId: 1 }), MonCashError);
 });
+
+test('verifyPayment répond ok:false si la transaction est introuvable', async () => {
+  const mc = new MonCash({
+    clientId: 'id',
+    clientSecret: 's',
+    fetch: fakeFetch([tokenOk, { status: 404, body: { error: 'Not Found', message: 'Transaction Not Found' } }]),
+  });
+  assert.deepEqual(await mc.verifyPayment({ orderId: 'X', amount: 10 }), { ok: false, payment: null });
+});

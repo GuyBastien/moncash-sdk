@@ -79,6 +79,10 @@ class TestMonCash(unittest.TestCase):
         self.assertTrue(mc.verify_payment(transaction_id="T1", order_id=42, amount=500)["ok"])
         self.assertFalse(mc.verify_payment(transaction_id="T1", order_id=42, amount=5000)["ok"])
 
+    def test_verify_payment_introuvable(self):
+        mc = MonCash("id", "s", transport=FakeTransport(TOKEN_OK, (404, {"message": "Transaction Not Found"})))
+        self.assertEqual(mc.verify_payment(order_id="X", amount=10), {"ok": False, "payment": None})
+
     def test_erreur(self):
         mc = MonCash("id", "s", transport=FakeTransport(TOKEN_OK, (404, {"message": "Transaction not found"})))
         with self.assertRaises(MonCashError) as ctx:
