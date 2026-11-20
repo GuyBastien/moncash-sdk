@@ -1,5 +1,11 @@
 # moncash-sdk
 
+<p>
+  <img src="https://moncashbutton.digicelgroup.com/Moncash-business/resources/assets/images/MonCash.png" alt="MonCash" height="90">
+  &nbsp;&nbsp;
+  <img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60">
+</p>
+
 SDK Node.js simple pour **MonCash** (Digicel) et **NatCash** (Natcom).
 Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 
