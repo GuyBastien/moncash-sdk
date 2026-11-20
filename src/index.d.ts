@@ -52,4 +52,62 @@ export declare class MonCash {
   prefundedBalance(): Promise<any>;
 }
 
+
+// ---------- NatCash ----------
+
+export interface NatCashOptions {
+  privateKey: string;
+  partnerCode: string;
+  functionCode: string;
+  username: string;
+  password: string;
+  callbackUrl: string;
+  mode?: 'sandbox' | 'live';
+  enableFee?: boolean;
+  language?: 'ht' | 'fr' | 'en';
+  timeout?: number;
+  fetch?: typeof fetch;
+}
+
+export interface NatCashPayment {
+  orderId: string;
+  transactionId: string;
+  amount: number;
+  payer: string;
+  success: boolean;
+  raw: any;
+}
+
+export interface NatCashCallbackQuery {
+  orderNumber?: string;
+  code?: string | number;
+  signature?: string;
+}
+
+export declare const NATCASH_CODE: { SUCCES: 1; ECHEC: -1; INCONNU: -3 };
+
+export declare class NatCashError extends Error {
+  status?: number;
+  code?: string;
+  body?: any;
+}
+
+export declare class NatCash {
+  constructor(options: NatCashOptions);
+  readonly mode: 'sandbox' | 'live';
+  createPayment(params: {
+    amount: number;
+    orderId: string | number;
+    msisdn?: string;
+    skipPhoneInput?: boolean;
+  }): Promise<{ redirectUrl: string; expiresIn?: number; raw: any }>;
+  getPaymentByOrderId(orderId: string | number): Promise<NatCashPayment>;
+  verifyCallback(query: NatCashCallbackQuery): boolean;
+  verifyPayment(params: {
+    query?: NatCashCallbackQuery;
+    orderId?: string | number;
+    amount?: number;
+  }): Promise<{ ok: boolean; reason?: string; payment: NatCashPayment | null }>;
+}
+
 export default MonCash;

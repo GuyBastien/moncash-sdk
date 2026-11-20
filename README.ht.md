@@ -1,7 +1,7 @@
 # moncash-sdk
 
-SDK Node.js senp pou API **MonCash** (Digicel Ayiti).
-Aksepte peman MonCash sou sit ou ak kèk liy kòd.
+SDK Node.js senp pou **MonCash** (Digicel) ak **NatCash** (Natcom).
+Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
 
 🇫🇷 [Lire en français](README.md)
 
@@ -10,6 +10,7 @@ Aksepte peman MonCash sou sit ou ak kèk liy kòd.
 - Li verifye peman an (estati, kòmand, montan)
 - Tip TypeScript ladan l
 - Mòd `sandbox` ak `live`
+- MonCash **ak** NatCash nan menm pake a
 
 ## Enstalasyon
 
@@ -65,6 +66,36 @@ Pa janm mete kle ou yo nan kòd la : sèvi ak varyab anviwònman.
 | `customerStatus(nimewo)` | Estati kont yon kliyan |
 | `prefundedBalance()` | Balans kont machann lan |
 
+## NatCash
+
+```js
+import { NatCash } from '@guybastien/moncash';
+
+const natcash = new NatCash({
+  privateKey: process.env.NATCASH_PRIVATE_KEY,
+  partnerCode: process.env.NATCASH_PARTNER_CODE,
+  functionCode: process.env.NATCASH_FUNCTION_CODE,
+  username: process.env.NATCASH_USERNAME,
+  password: process.env.NATCASH_PASSWORD,
+  callbackUrl: 'https://sitou.ht/natcash/retou',
+  mode: 'sandbox',
+  language: 'ht',
+});
+
+// 1. Kreye peman an
+const peman = await natcash.createPayment({ amount: 500, orderId: 'CMD-001' });
+res.redirect(peman.redirectUrl);
+
+// 2. Paj retou a : NatCash ajoute ?orderNumber=...&code=...&signature=...
+const { ok, reason, payment } = await natcash.verifyPayment({ query: req.query, amount: 500 });
+```
+
+`verifyPayment` verifye siyati retou a, mande NatCash tranzaksyon an, epi tcheke estati ak montan an.
+
+Egzanp konplè : [`examples/natcash-express.js`](examples/natcash-express.js).
+
+> **Nòt :** Natcom pa pibliye dokimantasyon piblik. Pou jwenn kle ou yo, kontakte Natcom. Pati sa a swiv fonksyònman SDK [php-natcash-sdk](https://github.com/midsonlajeanty/php-natcash-sdk) ak [natcashify](https://github.com/midsonlajeanty/natcashify) Louis Midson Lajeanty (MIT).
+
 ## Sekirite
 
 - **Toujou** verifye peman an sou sèvè a (`verifyPayment`).
@@ -73,7 +104,7 @@ Pa janm mete kle ou yo nan kòd la : sèvi ak varyab anviwònman.
 
 ## Kontribye
 
-Issues ak pull request byenveni. Lide : vèsyon Python, NatCash, middleware Express.
+Issues ak pull request byenveni. Lide : vèsyon Python, middleware Express, teste ak vrè kle NatCash.
 
 ## Lisans
 

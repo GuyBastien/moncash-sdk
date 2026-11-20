@@ -1,7 +1,7 @@
 # moncash-sdk
 
-SDK Node.js simple pour l'API **MonCash** (Digicel Haïti).
-Acceptez des paiements MonCash sur votre site en quelques lignes.
+SDK Node.js simple pour **MonCash** (Digicel) et **NatCash** (Natcom).
+Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 
 🇭🇹 [Li an kreyòl](README.ht.md)
 
@@ -10,6 +10,7 @@ Acceptez des paiements MonCash sur votre site en quelques lignes.
 - Vérification du paiement (statut, commande, montant)
 - Types TypeScript inclus
 - Mode `sandbox` et `live`
+- MonCash **et** NatCash dans le même paquet
 
 ## Installation
 
@@ -79,9 +80,46 @@ Un paiement renvoyé ressemble à :
 }
 ```
 
+## NatCash
+
+```js
+import { NatCash } from '@guybastien/moncash';
+
+const natcash = new NatCash({
+  privateKey: process.env.NATCASH_PRIVATE_KEY,
+  partnerCode: process.env.NATCASH_PARTNER_CODE,
+  functionCode: process.env.NATCASH_FUNCTION_CODE,
+  username: process.env.NATCASH_USERNAME,
+  password: process.env.NATCASH_PASSWORD,
+  callbackUrl: 'https://monsite.ht/natcash/retour',
+  mode: 'sandbox',   // 'live' en production
+  language: 'ht',    // 'ht', 'fr' ou 'en'
+});
+
+// 1. Créer le paiement
+const paiement = await natcash.createPayment({ amount: 500, orderId: 'CMD-001' });
+res.redirect(paiement.redirectUrl);
+
+// 2. Page de retour : NatCash ajoute ?orderNumber=...&code=...&signature=...
+const { ok, reason, payment } = await natcash.verifyPayment({ query: req.query, amount: 500 });
+```
+
+`verifyPayment` vérifie la signature du retour, demande la transaction à NatCash, puis contrôle le statut et le montant.
+
+| Fonction | Rôle |
+|---|---|
+| `createPayment({ amount, orderId, msisdn?, skipPhoneInput? })` | Crée un paiement, renvoie `{ redirectUrl }` |
+| `getPaymentByOrderId(orderId)` | Infos d'une transaction (`success`, `amount`, `payer`…) |
+| `verifyCallback(req.query)` | Vérifie seulement la signature HMAC du retour |
+| `verifyPayment({ query, amount })` | Signature + statut + montant, renvoie `{ ok, reason, payment }` |
+
+Exemple complet : [`examples/natcash-express.js`](examples/natcash-express.js).
+
+> **Note :** Natcom ne publie pas de documentation publique. Pour obtenir vos clés (clé privée, code partenaire, code fonction…), contactez Natcom. Cette partie suit le fonctionnement des SDK open source [php-natcash-sdk](https://github.com/midsonlajeanty/php-natcash-sdk) et [natcashify](https://github.com/midsonlajeanty/natcashify) de Louis Midson Lajeanty (MIT). Les signatures sont testées avec des vecteurs générés par le SDK PHP.
+
 ## Erreurs
 
-Toutes les erreurs sont des `MonCashError` avec `status` (code HTTP) et `body` (réponse de MonCash) :
+Les erreurs MonCash sont des `MonCashError` (et `NatCashError` pour NatCash) avec `status` (code HTTP) et `body` (réponse de MonCash) :
 
 ```js
 import { MonCashError } from '@guybastien/moncash';
@@ -107,8 +145,10 @@ npm test
 
 ## Contribuer
 
-Les issues et pull requests sont les bienvenues. Idées : version Python, support NatCash, middleware Express.
+Les issues et pull requests sont les bienvenues. Idées : version Python, middleware Express, tests avec de vraies clés NatCash.
 
 ## Licence
 
 MIT
+
+Merci à Louis Midson Lajeanty pour ses SDK NatCash qui ont servi de référence.

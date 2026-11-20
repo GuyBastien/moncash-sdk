@@ -231,4 +231,6 @@ function formatPayment(body) {
   };
 }
 
+export { NatCash, NatCashError, NATCASH_CODE } from "./natcash.js";
+
 export default MonCash;
