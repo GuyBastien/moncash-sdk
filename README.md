@@ -7,6 +7,7 @@
 </p>
 
 [![Tests](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml/badge.svg)](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml)
+[![npm](https://img.shields.io/npm/v/moncash-natcash)](https://www.npmjs.com/package/moncash-natcash)
 
 SDK Node.js et Python simple pour **MonCash** (Digicel) et **NatCash** (Natcom).
 Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
