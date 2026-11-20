@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "moncash-sdk"
+name = "moncash-natcash"
 version = "0.1.0"
 description = "SDK Python simple pour MonCash et NatCash (Haïti) : paiements, vérification, transferts"
 readme = "README.md"
@@ -22,4 +22,4 @@ classifiers = [
 Homepage = "https://github.com/GuyBastien/moncash-sdk"
 
 [tool.setuptools]
-packages = ["moncash_sdk"]
+packages = ["moncash_natcash"]

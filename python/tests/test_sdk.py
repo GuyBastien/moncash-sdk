@@ -3,7 +3,7 @@ import json
 import unittest
 from pathlib import Path
 
-from moncash_sdk import MonCash, MonCashError, NatCash, NatCashError
+from moncash_natcash import MonCash, MonCashError, NatCash, NatCashError
 
 VECTEURS = json.loads((Path(__file__).parent / "fixtures" / "natcash-php-vectors.json").read_text())
 
@@ -102,7 +102,7 @@ class TestNatCash(unittest.TestCase):
         for v in VECTEURS["payments"]:
             i, attendu = v["inputs"], v["payload"]
             nc = NatCash(**NATCASH, enable_fee=i["enableFee"], language=i["language"])
-            from moncash_sdk.natcash import _to_decimal
+            from moncash_natcash.natcash import _to_decimal
 
             data = nc._payment_payload(
                 i["orderNumber"],

@@ -27,13 +27,13 @@ Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 ## Installation
 
 ```bash
-npm install github:GuyBastien/moncash-sdk
+npm install moncash-natcash
 ```
 
 ## Démarrage rapide
 
 ```js
-import { MonCash } from '@guybastien/moncash';
+import { MonCash } from 'moncash-natcash';
 
 const moncash = new MonCash({
   clientId: process.env.MONCASH_CLIENT_ID,
@@ -97,7 +97,7 @@ Un paiement renvoyé ressemble à :
 <p><img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60"></p>
 
 ```js
-import { NatCash } from '@guybastien/moncash';
+import { NatCash } from 'moncash-natcash';
 
 const natcash = new NatCash({
   privateKey: process.env.NATCASH_PRIVATE_KEY,
@@ -136,7 +136,7 @@ Exemple complet : [`examples/natcash-express.js`](examples/natcash-express.js).
 Les erreurs MonCash sont des `MonCashError` (et `NatCashError` pour NatCash) avec `status` (code HTTP) et `body` (réponse de MonCash) :
 
 ```js
-import { MonCashError } from '@guybastien/moncash';
+import { MonCashError } from 'moncash-natcash';
 
 try {
   await moncash.getPaymentByTransactionId('123');
@@ -156,11 +156,11 @@ try {
 Une version Python (3.10+, sans dépendance) se trouve dans le dossier [`python/`](python/) :
 
 ```bash
-pip install moncash-sdk
+pip install moncash-natcash
 ```
 
 ```python
-from moncash_sdk import MonCash, NatCash
+from moncash_natcash import MonCash, NatCash
 
 moncash = MonCash("CLIENT_ID", "CLIENT_SECRET", mode="sandbox")
 paiement = moncash.create_payment(amount=500, order_id="CMD-001")

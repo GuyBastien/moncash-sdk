@@ -1,7 +1,7 @@
 // Exemple NatCash avec Express
 // NATCASH_PRIVATE_KEY=... NATCASH_PARTNER_CODE=... node examples/natcash-express.js
 import express from 'express';
-import { NatCash } from '../src/index.js'; // dans votre projet : from '@guybastien/moncash'
+import { NatCash } from '../src/index.js'; // dans votre projet : from 'moncash-natcash'
 
 const app = express();
 const natcash = new NatCash({

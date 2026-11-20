@@ -1,8 +1,8 @@
 // Exemple complet avec Express
-// npm install express @guybastien/moncash
+// npm install express moncash-natcash
 // MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node examples/express.js
 import express from 'express';
-import { MonCash } from '../src/index.js'; // dans votre projet : from '@guybastien/moncash'
+import { MonCash } from '../src/index.js'; // dans votre projet : from 'moncash-natcash'
 
 const app = express();
 const moncash = new MonCash({

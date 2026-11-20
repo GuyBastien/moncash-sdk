@@ -27,13 +27,13 @@ Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
 ## Enstalasyon
 
 ```bash
-npm install github:GuyBastien/moncash-sdk
+npm install moncash-natcash
 ```
 
 ## Kòmanse rapid
 
 ```js
-import { MonCash } from '@guybastien/moncash';
+import { MonCash } from 'moncash-natcash';
 
 const moncash = new MonCash({
   clientId: process.env.MONCASH_CLIENT_ID,
@@ -83,7 +83,7 @@ Pa janm mete kle ou yo nan kòd la : sèvi ak varyab anviwònman.
 <p><img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60"></p>
 
 ```js
-import { NatCash } from '@guybastien/moncash';
+import { NatCash } from 'moncash-natcash';
 
 const natcash = new NatCash({
   privateKey: process.env.NATCASH_PRIVATE_KEY,
@@ -121,7 +121,7 @@ Egzanp konplè : [`examples/natcash-express.js`](examples/natcash-express.js).
 Gen yon vèsyon Python (3.10+, san depandans) nan dosye [`python/`](python/) :
 
 ```bash
-pip install moncash-sdk
+pip install moncash-natcash
 ```
 
 ## Tès

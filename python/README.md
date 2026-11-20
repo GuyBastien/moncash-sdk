@@ -5,14 +5,14 @@ SDK Python simple pour **MonCash** (Digicel) et **NatCash** (Natcom). Aucune dé
 > Projet non officiel, sans lien avec Digicel ni Natcom.
 
 ```bash
-pip install moncash-sdk
+pip install moncash-natcash
 ```
 
 ## MonCash
 
 ```python
 import os
-from moncash_sdk import MonCash
+from moncash_natcash import MonCash
 
 moncash = MonCash(os.environ["MONCASH_CLIENT_ID"], os.environ["MONCASH_CLIENT_SECRET"], mode="sandbox")
 
@@ -31,7 +31,7 @@ Autres fonctions : `get_payment_by_transaction_id`, `get_payment_by_order_id`, `
 ## NatCash
 
 ```python
-from moncash_sdk import NatCash
+from moncash_natcash import NatCash
 
 natcash = NatCash(
     private_key="...", partner_code="...", function_code="...",
