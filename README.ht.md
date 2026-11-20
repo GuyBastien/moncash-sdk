@@ -8,6 +8,7 @@
 
 [![Tests](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml/badge.svg)](https://github.com/GuyBastien/moncash-sdk/actions/workflows/tests.yml)
 [![npm](https://img.shields.io/npm/v/moncash-natcash)](https://www.npmjs.com/package/moncash-natcash)
+[![PyPI](https://img.shields.io/pypi/v/moncash-natcash)](https://pypi.org/project/moncash-natcash/)
 
 SDK Node.js ak Python senp pou **MonCash** (Digicel) ak **NatCash** (Natcom).
 Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
