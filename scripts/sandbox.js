@@ -1,12 +1,22 @@
 // Test réel contre la sandbox MonCash (et NatCash si les clés sont là)
 //
-// MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
+// node scripts/sandbox.js   (le script demande les clés)
+// ou : MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
 //
 // Pour NatCash, ajoutez aussi : NATCASH_PRIVATE_KEY, NATCASH_PARTNER_CODE,
 // NATCASH_FUNCTION_CODE, NATCASH_USERNAME, NATCASH_PASSWORD
+import { createInterface } from 'node:readline/promises';
 import { MonCash, NatCash } from '../src/index.js';
 
 const e = process.env;
+
+// Si les clés ne sont pas dans l'environnement, on les demande
+if (!e.MONCASH_CLIENT_ID && process.stdin.isTTY) {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  e.MONCASH_CLIENT_ID = (await rl.question('Client ID MonCash : ')).trim();
+  e.MONCASH_CLIENT_SECRET = (await rl.question('Client Secret MonCash : ')).trim();
+  rl.close();
+}
 const orderId = `TEST-${Date.now()}`;
 
 async function etape(nom, fn) {
