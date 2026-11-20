@@ -1,0 +1,23 @@
+{
+  "name": "@guybastien/moncash",
+  "version": "0.1.0",
+  "description": "SDK Node.js simple pour l'API MonCash (Digicel Haïti) : paiements, vérification, transferts",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "files": ["src"],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["moncash", "digicel", "haiti", "ayiti", "payment", "paiement", "sdk"],
+  "author": "GuyBastien",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/GuyBastien/moncash-sdk.git" }
+}
