@@ -12,6 +12,8 @@ Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
 - Mòd `sandbox` ak `live`
 - MonCash **ak** NatCash nan menm pake a
 
+> Pwojè sa a pa ofisyèl, li pa gen lyen ak Digicel ni Natcom. MonCash ak NatCash se mak pwopriyetè yo.
+
 ## Enstalasyon
 
 ```bash
@@ -67,6 +69,8 @@ Pa janm mete kle ou yo nan kòd la : sèvi ak varyab anviwònman.
 | `prefundedBalance()` | Balans kont machann lan |
 
 ## NatCash
+
+<p><img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60"></p>
 
 ```js
 import { NatCash } from '@guybastien/moncash';

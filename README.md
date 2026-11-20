@@ -12,6 +12,8 @@ Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 - Mode `sandbox` et `live`
 - MonCash **et** NatCash dans le même paquet
 
+> Projet non officiel, sans lien avec Digicel ni Natcom. MonCash et NatCash sont des marques de leurs propriétaires.
+
 ## Installation
 
 ```bash
@@ -81,6 +83,8 @@ Un paiement renvoyé ressemble à :
 ```
 
 ## NatCash
+
+<p><img src="https://testmerchantpay.natcom.com.ht/merchant/_next/static/images/logo-1689408a84fe0c46831e7ae2d19fe04c.png" alt="NatCash" height="60"></p>
 
 ```js
 import { NatCash } from '@guybastien/moncash';
