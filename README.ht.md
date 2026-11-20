@@ -143,6 +143,11 @@ MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
 
 Issues ak pull request byenveni. Lide : middleware Express, Django/Flask, teste ak vrè kle NatCash.
 
+## Remèsiman
+
+- [Joe (Christerlin)](https://github.com/Christerlin), pou èd li sou tès yo ak sandbox MonCash la.
+- Louis Midson Lajeanty, pou SDK NatCash li yo ki te sèvi referans.
+
 ## Lisans
 
 MIT

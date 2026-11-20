@@ -190,4 +190,7 @@ Les issues et pull requests sont les bienvenues. Idées : middleware Express, in
 
 MIT
 
-Merci à Louis Midson Lajeanty pour ses SDK NatCash qui ont servi de référence.
+## Remerciements
+
+- [Joe (Christerlin)](https://github.com/Christerlin), pour son aide sur les tests avec la sandbox MonCash.
+- Louis Midson Lajeanty, pour ses SDK NatCash qui ont servi de référence.
