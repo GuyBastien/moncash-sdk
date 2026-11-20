@@ -20,7 +20,7 @@ Acceptez les paiements mobiles haïtiens sur votre site en quelques lignes.
 - Mode `sandbox` et `live`
 - MonCash **et** NatCash dans le même paquet
 
-> **Statut :** MonCash vérifié avec la vraie sandbox (jeton, adresses de l'API, erreurs). Le paiement complet reste à tester. NatCash vérifié sur le serveur de test de Natcom (adresses, format des réponses), sans clés.
+> **Statut :** MonCash testé de bout en bout avec la vraie sandbox (création du paiement, paiement, vérification) en Node.js et en Python. NatCash vérifié sur le serveur de test de Natcom (adresses, format des réponses), sans clés.
 
 > Projet non officiel, sans lien avec Digicel ni Natcom. MonCash et NatCash sont des marques de leurs propriétaires.
 

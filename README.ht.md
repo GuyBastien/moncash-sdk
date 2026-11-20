@@ -20,7 +20,7 @@ Aksepte peman mobil ayisyen sou sit ou ak kèk liy kòd.
 - Mòd `sandbox` ak `live`
 - MonCash **ak** NatCash nan menm pake a
 
-> **Estati :** MonCash verifye ak vrè sandbox la (jeton, adrès API yo, erè yo). Peman konplè a poko teste. NatCash verifye sou sèvè tès Natcom (adrès, fòma repons), san kle.
+> **Estati :** MonCash teste de bout an bout ak vrè sandbox la (kreye peman, peye, verifye) an Node.js ak Python. NatCash verifye sou sèvè tès Natcom (adrès, fòma repons), san kle.
 
 > Pwojè sa a pa ofisyèl, li pa gen lyen ak Digicel ni Natcom. MonCash ak NatCash se mak pwopriyetè yo.
 
