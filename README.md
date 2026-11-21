@@ -179,8 +179,12 @@ cd python && python -m unittest discover -s tests     # Python
 Test réel avec vos clés sandbox :
 
 ```bash
-MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
+MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js   # Node.js
+python scripts/sandbox.py                                                  # Python
 ```
+
+Le script Python lit les clés dans un fichier `.env` (copiez `.env.example`) ou les demande.
+Il crée un paiement de 10 HTG, vous le payez avec un compte client sandbox, puis il le vérifie.
 
 ## Contribuer
 

@@ -136,8 +136,12 @@ cd python && python -m unittest discover -s tests     # Python
 Tès reyèl ak kle sandbox ou :
 
 ```bash
-MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js
+MONCASH_CLIENT_ID=... MONCASH_CLIENT_SECRET=... node scripts/sandbox.js   # Node.js
+python scripts/sandbox.py                                                  # Python
 ```
+
+Script Python la li kle yo nan yon fichye `.env` (kopye `.env.example`), sinon li mande w yo.
+Li kreye yon peman 10 HTG, ou peye l ak yon kont kliyan sandbox, epi li verifye l.
 
 ## Kontribye
 
