@@ -59,6 +59,17 @@ test('verifyCallback accepte les bonnes signatures et refuse les mauvaises', () 
   assert.equal(nc.verifyCallback({}), false);
 });
 
+test('verifyCallback refuse une signature non ASCII sans planter', async () => {
+  const nc = new NatCash({ ...base, fetch: fakeFetch([]) });
+  // 64 caractères (128 octets), puis 32 caractères (64 octets)
+  for (const signature of ['é'.repeat(64), 'é'.repeat(32)]) {
+    const query = { orderNumber: 'ORDER-001', code: '1', signature };
+    assert.equal(nc.verifyCallback(query), false);
+    const r = await nc.verifyPayment({ query });
+    assert.deepEqual([r.ok, r.reason], [false, 'signature invalide']);
+  }
+});
+
 test('createPayment renvoie le lien NatCash', async () => {
   const fetch = fakeFetch([{ status: 200, body: { status: 0, code: 'MSG_SUCCESS', message: 'ok', url: 'https://pay/abc', expiredAt: 600 } }]);
   const nc = new NatCash({ ...base, fetch });

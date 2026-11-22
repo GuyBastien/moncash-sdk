@@ -132,10 +132,11 @@ export class NatCash {
    */
   verifyCallback({ orderNumber, code, signature } = {}) {
     if (!orderNumber || code === undefined || !signature) return false;
-    const attendu = this._callbackSignature(String(orderNumber), Number(code));
-    const recu = String(signature).trim().toLowerCase();
+    const attendu = Buffer.from(this._callbackSignature(String(orderNumber), Number(code)));
+    const recu = Buffer.from(String(signature).trim().toLowerCase());
+    // Comparer les octets : un caractère non ASCII en occupe plusieurs
     if (recu.length !== attendu.length) return false;
-    return timingSafeEqual(Buffer.from(attendu), Buffer.from(recu));
+    return timingSafeEqual(attendu, recu);
   }
 
   /**

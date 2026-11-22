@@ -1,0 +1,34 @@
+# Déploiement de la page de démo sur Render (Blueprint).
+# Les clés ne sont jamais dans ce fichier : Render les demande à la création.
+services:
+  - type: web
+    name: demo-paiements-haiti
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    buildCommand: npm install --omit=dev
+    startCommand: node examples/plopplop-demo.js
+    healthCheckPath: /
+    # Un déploiement efface les paiements en cours : on le lance à la main
+    autoDeployTrigger: "off"
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: "10000"
+      - key: TRUST_PROXY
+        value: "1"
+      # À retirer une fois TRUST_PROXY ajusté
+      - key: DEMO_DEBUG_PROXY
+        value: "1"
+      # Clés SANDBOX uniquement
+      - key: MONCASH_CLIENT_ID
+        sync: false
+      - key: MONCASH_CLIENT_SECRET
+        sync: false
+      # Active NatCash en argent réel. Laisser vide pour ne proposer que MonCash
+      - key: PLOPPLOP_CLIENT_ID
+        sync: false
