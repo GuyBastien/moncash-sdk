@@ -12,4 +12,4 @@ __all__ = [
     "CODE_ECHEC",
     "CODE_INCONNU",
 ]
-__version__ = "0.1.0"
+__version__ = "0.1.1"

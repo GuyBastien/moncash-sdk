@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "moncash-natcash"
-version = "0.1.0"
+version = "0.1.1"
 description = "SDK Python simple pour MonCash et NatCash (Haïti) : paiements, vérification, transferts"
 readme = "README.md"
 license = { text = "MIT" }
