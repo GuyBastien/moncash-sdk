@@ -296,6 +296,9 @@ button:focus-visible, a.bouton:focus-visible { outline:3px solid var(--texte); o
 #etat.alerte { color:var(--alerte); }
 [hidden] { display:none !important; }
 footer { margin-top:20px; padding-top:14px; border-top:1px solid var(--ligne); color:var(--doux); font-size:.8rem; }
+footer .source { margin-top:8px; }
+footer a { color:var(--texte); font-weight:600; text-underline-offset:2px; }
+footer a:focus-visible { outline:3px solid var(--texte); outline-offset:2px; }
 </style>
 </head>
 <body>
@@ -311,7 +314,10 @@ footer { margin-top:20px; padding-top:14px; border-top:1px solid var(--ligne); c
   </div>
   <a id="lien" class="bouton" target="_blank" rel="noopener noreferrer" hidden></a>
   <p id="etat" role="status" aria-live="polite"></p>
-  <footer>Projet non officiel, sans lien avec Digicel, Natcom ni PlopPlop. Ne saisissez vos identifiants que sur la page de paiement officielle.</footer>
+  <footer>
+    <p>Projet indépendant utilisant la sandbox MonCash et le service PlopPlop pour NatCash. Il n'est ni édité ni approuvé par Digicel ou Natcom. Cette page ne vous demandera jamais votre code.</p>
+    <p class="source"><a href="https://github.com/GuyBastien/moncash-sdk" target="_blank" rel="noopener noreferrer">Code source sur GitHub</a></p>
+  </footer>
 </main>
 <script nonce="${nonce}">
 const CONFIG = ${JSON.stringify(config)};
