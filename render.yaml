@@ -19,11 +19,9 @@ services:
         value: 0.0.0.0
       - key: PORT
         value: "10000"
+      # Nombre d'entrées X-Forwarded-For mesuré sur Render
       - key: TRUST_PROXY
-        value: "1"
-      # À retirer une fois TRUST_PROXY ajusté
-      - key: DEMO_DEBUG_PROXY
-        value: "1"
+        value: "3"
       # Clés SANDBOX uniquement
       - key: MONCASH_CLIENT_ID
         sync: false
